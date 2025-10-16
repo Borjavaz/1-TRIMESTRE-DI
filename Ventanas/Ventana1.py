@@ -69,16 +69,16 @@ class Ventana1 (QMainWindow):
 
         btnMayusculas = QPushButton("Mayúsculas")
         btnMayusculas.setCheckable(True)
-        btnMayusculas.toggle().connect(self.boton_mayusculas_presionado)
-        self.mayusculas = True
+        btnMayusculas.toggled.connect(self.boton_mayusculas_presionado)  # ¡Corrección de la conexión!
 
-        caixaV = QVBoxLayout() # Almacenar
+        caixaV = QVBoxLayout()
 
         # Añade a la ventana los elementos anteriores
         caixaV.addWidget(self.lblEtiqueta)
         caixaV.addWidget(self.txtSaudo)
         caixaV.addWidget(btnSaudo)
         caixaV.addWidget(btnCambio)
+        caixaV.addWidget(btnMayusculas)
 
         container = QWidget() # Almacenar
         container.setLayout(caixaV)
@@ -92,4 +92,4 @@ Ejecuta la ventana
 if __name__ == "__main__":
     aplication = QApplication(sys.argv)
     fiestra = Ventana1()
-    aplication.exec()
+    sys.exit(aplication.exec())
